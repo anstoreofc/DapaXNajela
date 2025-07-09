@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DapaXNajela</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,300;1,700&display=swap" rel="stylesheet" />
+  <link href="assets/css/index.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold text-primary" href="#">DapaXNajela</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Beranda</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Tentang</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-4">
+    <h2 class="text-center text-primary fw-bold mb-4">Semangat Menabung Sayanggg ❤</h2>
+    <div class="stats-container">
+      <div class="table-responsive">
+        <table class="table table-bordered text-center">
+          <thead class="table-primary">
+            <tr>
+              <th>Nama</th>
+              <th>Total Menabung</th>
+              <th>Total Cashout</th>
+              <th>Saldo</th>
+            </tr>
+          </thead>
+          <tbody id="summaryTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-end gap-2 mb-3">
+      <button class="btn btn-success btn-custom" onclick="openForm('Tabung')">+ Menabung</button>
+      <button class="btn btn-danger btn-custom" onclick="openForm('Cashout')">- Cashout</button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead class="table-info">
+          <tr>
+            <th>Tanggal</th>
+            <th>Nama</th>
+            <th>Jenis Transaksi</th>
+            <th>Nominal</th>
+            <th>Catatan</th>
+          </tr>
+        </thead>
+        <tbody id="dataBody"></tbody>
+      </table>
+      <div id="pagination" class="d-flex justify-content-center mt-3 flex-wrap gap-2"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <small>&copy;2025 DapaXNajela. All rights reserved.</small>
+    </div>
+  </footer>
+  <div class="modal fade" id="transferModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary">Transfer ke Rekening</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+        </div>
+        <div class="modal-body">
+          <p>Silakan transfer ke rekening berikut sebelum lanjut</p>
+          <h6 class="fw-bold text-success">KROM - 771069023577</h6>
+          <p>a.n. AHMAD KHOIROON DAFFA</p>
+          <button class="btn btn-success mt-2" onclick="lanjutSetelahTransfer()">Udh sayanggg</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="popup" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-primary" id="formTitle">Form</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="formData">
+          <div class="modal-body">
+            <input type="hidden" name="jenis" id="formJenis" />
+            <div class="mb-3">
+              <label class="form-label">Nama</label>
+              <select name="nama" class="form-select" required>
+                <option value="">-- Pilih Nama --</option>
+                <option value="User 1">Dapa</option>
+                <option value="User 2">Najela</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nominal</label>
+              <input type="number" name="nominal" class="form-control" required />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Catatan</label>
+              <input type="text" name="catatan" class="form-control">
+            </div>
+            <div class="text-success text-center" id="popupStatus"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary">Kirim</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlay"></div>
+  <div id="loadingSpinner">
+    <div class="spinner-border text-primary" role="status"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>
