@@ -79,7 +79,9 @@
       font-weight: 500;
       font-family: 'Poppins', sans-serif;
     }
-
+.pagination-wrapper {
+  text-align: center;
+}
     .table thead {
       background-color: #cce5ff;
     }
